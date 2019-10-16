@@ -24,10 +24,9 @@ public class RemoveDuplicates {
         }
 
         int j = 0;
-        for (int i = 0; i < len; i ++) {
-            if (nums[i] == nums[j]) {
-            } else {
-                j ++;
+        for (int i = 0; i < len; i++) {
+            if (nums[i] != nums[j]) {
+                j++;
                 nums[j] = nums[i];
             }
         }
