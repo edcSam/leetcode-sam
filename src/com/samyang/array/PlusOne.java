@@ -18,6 +18,19 @@ import java.util.Arrays;
  */
 public class PlusOne {
 
+    /**
+     * 解题思路与逻辑是正确的，但是我的写法对比起最佳解法而言太复杂了。
+     * 注意两个问题：
+     * 1.不要用标志位，在不进位的时候就可以直接返回。而我想着跳出 for loop，因此用了标志位，以达到末尾 return。
+     * 2.也正是由于「1」，目标数组每一个元素的进位的情况需要进行判断，从而以新的数组，新的 return 语句返回。
+     * 实际上如果「1」做正确了，for loop 自然结束，就表示每一位进位。
+     * 这时新建数组，第一位赋值 1 就可以。（这种情况是类似「999」情况）。这样也避免了数组拷贝。
+     *
+     * @param digits
+     * @return int[]
+     * @author Yang Rong
+     * @create 2019/10/17
+     */
     public static int[] plusOne(int[] digits) {
         int len = digits.length;
         if (len == 0) {
