@@ -2,7 +2,7 @@
  * Yang Rong Individual Service
  * All Rights Reserved @2019
  */
-package com.samyang.array;
+package com.samyang.leetcode.array;
 
 import java.util.Arrays;
 

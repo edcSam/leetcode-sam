@@ -2,7 +2,7 @@
  * Yang Rong Individual Service
  * All Rights Reserved @2019
  */
-package com.samyang.array;
+package com.samyang.leetcode.array;
 
 /**
  * 80. Remove Duplicates from Sorted Array II

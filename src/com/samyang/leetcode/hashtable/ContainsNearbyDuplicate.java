@@ -2,7 +2,7 @@
  * Yang Rong Individual Service
  * All Rights Reserved @2019
  */
-package com.samyang.hashtable;
+package com.samyang.leetcode.hashtable;
 
 import java.util.HashMap;
 import java.util.HashSet;
