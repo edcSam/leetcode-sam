@@ -1,6 +1,6 @@
 /**
  * Yang Rong Individual Service
- * All Rights Reserved @2019
+ * All Rights Reserved @2020
  */
 package com.sam3125c.leetcode.hashtable;
 
