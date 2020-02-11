@@ -28,11 +28,11 @@ public class InOrderTraversal {
             return;
         }
         // 左子树回溯逻辑。
-        recursiveInOrderTraversal(node.leftChild);
+        recursiveInOrderTraversal(node.left);
         // 处理逻辑。
-        System.out.println(node.data);
+        System.out.println(node.val);
         // 右子树回溯逻辑。
-        recursiveInOrderTraversal(node.rightChild);
+        recursiveInOrderTraversal(node.right);
     }
 
 }

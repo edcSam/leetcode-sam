@@ -33,8 +33,8 @@ public class Main {
         Integer data = input.removeFirst();
         if (data != null) {
             node = new TreeNode(data);
-            node.leftChild = createBinaryTree(input);
-            node.rightChild = createBinaryTree(input);
+            node.left = createBinaryTree(input);
+            node.right = createBinaryTree(input);
         }
         return node;
     }

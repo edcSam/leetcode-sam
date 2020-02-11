@@ -14,14 +14,14 @@ package com.sam3125c.datastructure.binarytree;
  */
 public class TreeNode {
 
-    int data;
+    public int val;
 
-    TreeNode leftChild;
+    public TreeNode left;
 
-    TreeNode rightChild;
+    public TreeNode right;
 
-    TreeNode(int data) {
-        this.data = data;
+    public TreeNode(int val) {
+        this.val = val;
     }
 
 }

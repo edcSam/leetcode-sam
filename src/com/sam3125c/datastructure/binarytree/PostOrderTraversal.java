@@ -28,10 +28,10 @@ public class PostOrderTraversal {
             return;
         }
         // 回溯逻辑。
-        recursivePostOrderTraversal(node.leftChild);
-        recursivePostOrderTraversal(node.rightChild);
+        recursivePostOrderTraversal(node.left);
+        recursivePostOrderTraversal(node.right);
         // 处理逻辑。
-        System.out.println(node.data);
+        System.out.println(node.val);
     }
 
 }

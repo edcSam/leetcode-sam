@@ -28,10 +28,10 @@ public class PreOrderTraversal {
             return;
         }
         // 处理逻辑。
-        System.out.println(node.data);
+        System.out.println(node.val);
         // 回溯逻辑。
-        recursivePreOrderTraversal(node.leftChild);
-        recursivePreOrderTraversal(node.rightChild);
+        recursivePreOrderTraversal(node.left);
+        recursivePreOrderTraversal(node.right);
     }
 
 }
