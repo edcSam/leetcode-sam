@@ -10,9 +10,13 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * 206. Reverse Linked List
+ * 206. Reverse Linked List V1
  * Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
  * Memory Usage: 38.8 MB, less than 5.04% of Java online submissions for Reverse Linked List.
+ *
+ * 206. Reverse Linked List V2
+ * Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
+ * Memory Usage: 39.2 MB, less than 5.04% of Java online submissions for Reverse Linked List.
  *
  * @author Yang Rong
  * @version 1.0
@@ -23,8 +27,8 @@ public class ReverseLinkedList {
 
     public Queue<ListNode> queue = new LinkedList<>();
 
-    public ListNode reverseList(ListNode head) {
-        traversalList(head);
+    public ListNode reverseListV1(ListNode head) {
+        traversalListV1(head);
         ListNode newHead = null;
         while (!queue.isEmpty()) {
             ListNode node = queue.poll();
@@ -34,12 +38,25 @@ public class ReverseLinkedList {
         return newHead;
     }
 
-    public void traversalList(ListNode node) {
+    public void traversalListV1(ListNode node) {
         if (node == null) {
             return;
         }
         queue.add(node);
-        traversalList(node.next);
+        traversalListV1(node.next);
+    }
+
+    public ListNode reverseListV2(ListNode head) {
+        return traversalListV2(null, head);
+    }
+
+    public ListNode traversalListV2(ListNode newHead, ListNode oldHead) {
+        if (oldHead == null) {
+            return newHead;
+        }
+        ListNode node = new ListNode(oldHead.val);
+        node.next = newHead;
+        return traversalListV2(node, oldHead.next);
     }
 
 }
