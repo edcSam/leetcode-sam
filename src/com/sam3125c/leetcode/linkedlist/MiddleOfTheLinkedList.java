@@ -47,5 +47,5 @@ public class MiddleOfTheLinkedList {
         }
         return two;
     }
-    
+
 }
