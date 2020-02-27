@@ -61,4 +61,28 @@ public class Sort {
         return array;
     }
 
+    /**
+     * 选择排序。
+     *
+     * @param array
+     * @return int[]
+     * @author Yang Rong
+     * @create 2020/2/27
+     */
+    public static int[] choiceSort(int[] array) {
+        int len = array.length;
+        for (int i = 0; i < len; i++) {
+            int min = i;
+            for (int j = i; j < len; j++) {
+                if (array[j] < array[min]) {
+                    min = j;
+                }
+            }
+            int temp = array[i];
+            array[i] = array[min];
+            array[min] = temp;
+        }
+        return array;
+    }
+
 }
