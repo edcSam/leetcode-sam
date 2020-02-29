@@ -138,4 +138,75 @@ public class Traversal {
         }
     }
 
+    /**
+     * 带深度的广度优先遍历。
+     *
+     * @param node
+     * @return void
+     * @author Yang Rong
+     * @create 2020/2/29
+     */
+    public static void breadthFirstSearchWithDepth(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        StrengthenNode sNode = new StrengthenNode(node, 1);
+        // 借助队列结构实现按层遍历。
+        Queue<StrengthenNode> queue = new LinkedList<>();
+        queue.offer(sNode);
+        // 循环到队列为空。
+        while (!queue.isEmpty()) {
+            StrengthenNode curr = queue.poll();
+            // 处理逻辑。
+            System.out.println(String.format("node val is %s, node depth is %s.", curr.node.val, curr.depth));
+            // 先入队左子树。
+            if (curr.node.left != null) {
+                queue.offer(new StrengthenNode(curr.node.left, curr.depth + 1));
+            }
+            // 再入队右子树。
+            if (curr.node.right != null) {
+                queue.offer(new StrengthenNode(curr.node.right, curr.depth + 1));
+            }
+        }
+    }
+
+    /**
+     * 广度遍历，并给出层与层之间的分界点。
+     *
+     * @param node
+     * @return void
+     * @author Yang Rong
+     * @create 2020/2/29
+     */
+    public static void breadthFirstSearchWithDepthV2(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        // 借助队列结构实现。
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(node);
+        int depth = 0;
+        // 循环到队列为空。
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            // 层与层之间的分界点。
+            depth ++;
+            System.out.println("current depth is " + depth);
+            // 层内遍历。
+            for (int i = 0; i < size; i++) {
+                TreeNode curr = queue.poll();
+                // 处理逻辑。
+                System.out.println(curr.val);
+                // 先入队左子树。
+                if (curr.left != null) {
+                    queue.offer(curr.left);
+                }
+                // 再入队右子树。
+                if (curr.right != null) {
+                    queue.offer(curr.right);
+                }
+            }
+        }
+    }
+
 }

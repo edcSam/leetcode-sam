@@ -41,6 +41,10 @@ public class Main {
 
         System.out.println("广度遍历：");
         Traversal.breadthFirstSearch(treeNode1);
+
+        System.out.println("带深度的广度遍历：");
+        Traversal.breadthFirstSearchWithDepth(treeNode1);
+        Traversal.breadthFirstSearchWithDepthV2(treeNode1);
     }
 
 }
