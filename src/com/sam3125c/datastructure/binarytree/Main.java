@@ -7,6 +7,8 @@ package com.sam3125c.datastructure.binarytree;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import static com.sam3125c.datastructure.binarytree.TreeNode.createBinaryTree;
+
 /**
  * 二叉树数据结构相关测试。
  *
@@ -17,39 +19,28 @@ import java.util.LinkedList;
  */
 public class Main {
 
-    /**
-     * 利用数组创建一个二叉树。
-     *
-     * @param input
-     * @return com.sam3125c.datastructure.binarytree.TreeNode
-     * @author Yang Rong
-     * @create 2020/2/4
-     */
-    public static TreeNode createBinaryTree(LinkedList<Integer> input) {
-        TreeNode node = null;
-        if (input == null || input.isEmpty()) {
-            return null;
-        }
-        Integer data = input.removeFirst();
-        if (data != null) {
-            node = new TreeNode(data);
-            node.left = createBinaryTree(input);
-            node.right = createBinaryTree(input);
-        }
-        return node;
-    }
-
     public static void main(String[] args) {
-        LinkedList<Integer> input = new LinkedList<>(Arrays.asList(3, 2, 9, null, null, 10, null, null, 8, null, 4));
+        LinkedList<Integer> input = new LinkedList<>(
+                Arrays.asList(1, 2, 4, null, null, 5, null, null, 3, 6, null, null, 7));
+        LinkedList<Integer> input1 = new LinkedList<>(
+                Arrays.asList(4, 2, 1, null, null, 3, null, null, 6, 5, null, null, 7));
         TreeNode treeNode = createBinaryTree(input);
+        TreeNode treeNode1 = createBinaryTree(input1);
 
         System.out.println("前序遍历：");
-        PreOrderTraversal.recursivePreOrderTraversal(treeNode);
+        Traversal.preOrderTraversal(treeNode1);
 
         System.out.println("中序遍历：");
-        InOrderTraversal.recursiveInOrderTraversal(treeNode);
+        Traversal.inOrderTraversal(treeNode1);
 
         System.out.println("后序遍历：");
-        PostOrderTraversal.recursivePostOrderTraversal(treeNode);
+        Traversal.postOrderTraversal(treeNode1);
+
+        System.out.println("深度遍历：");
+        Traversal.depthFirstSearch(treeNode1);
+
+        System.out.println("广度遍历：");
+        Traversal.breadthFirstSearch(treeNode1);
     }
+
 }
