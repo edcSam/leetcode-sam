@@ -88,7 +88,7 @@ public class Traversal {
         if (node == null) {
             return;
         }
-        // 借助栈结构实现。
+        // 借助栈结构实现深度遍历。
         Stack<TreeNode> stack = new Stack<>();
         stack.push(node);
         // 循环到栈为空。
@@ -103,6 +103,73 @@ public class Traversal {
             // 再压左子树。
             if (curr.left != null) {
                 stack.push(curr.left);
+            }
+        }
+    }
+
+    /**
+     * 带深度的深度优先遍历。
+     *
+     * @param node
+     * @return void
+     * @author Yang Rong
+     * @create 2020/2/29
+     */
+    public static void depthFirstSearchWithDepth(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        StrengthenNode sNode = new StrengthenNode(node, 1);
+        // 借助栈结构实现深度遍历。
+        Stack<StrengthenNode> stack = new Stack<>();
+        stack.push(sNode);
+        // 循环到栈为空。
+        while (!stack.isEmpty()) {
+            StrengthenNode curr = stack.pop();
+            // 处理逻辑。
+            System.out.println(String.format("node val is %s, node depth is %s.", curr.node.val, curr.depth));
+            // 先压右子树。
+            if (curr.node.right != null) {
+                stack.push(new StrengthenNode(curr.node.right, curr.depth + 1));
+            }
+            // 再压左子树。
+            if (curr.node.left != null) {
+                stack.push(new StrengthenNode(curr.node.left, curr.depth + 1));
+            }
+        }
+    }
+
+    /**
+     * 深度遍历，并给出叶子节点之间的分界点。
+     *
+     * @param node
+     * @return void
+     * @author Yang Rong
+     * @create 2020/2/29
+     */
+    public static void depthFirstSearchWithDepthV2(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        // 借助栈结构实现深度遍历。
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(node);
+        // 循环到栈为空。
+        while (!stack.isEmpty()) {
+            TreeNode curr = stack.pop();
+            // 处理逻辑。
+            System.out.println(curr.val);
+            // 先压右子树。
+            if (curr.right != null) {
+                stack.push(curr.right);
+            }
+            // 再压左子树。
+            if (curr.left != null) {
+                stack.push(curr.left);
+            }
+            // 叶子节点。
+            if (curr.left == null && curr.right == null) {
+                System.out.println("current node is leaf node, node val is " + curr.val);
             }
         }
     }
@@ -182,7 +249,7 @@ public class Traversal {
         if (node == null) {
             return;
         }
-        // 借助队列结构实现。
+        // 借助队列结构实现按层遍历。
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(node);
         int depth = 0;

@@ -39,11 +39,19 @@ public class Main {
         System.out.println("深度遍历：");
         Traversal.depthFirstSearch(treeNode1);
 
+        System.out.println("带深度的深度遍历：");
+        Traversal.depthFirstSearchWithDepth(treeNode1);
+
+        System.out.println("叶子节点间隔的深度遍历：");
+        Traversal.depthFirstSearchWithDepthV2(treeNode1);
+
         System.out.println("广度遍历：");
         Traversal.breadthFirstSearch(treeNode1);
 
         System.out.println("带深度的广度遍历：");
         Traversal.breadthFirstSearchWithDepth(treeNode1);
+
+        System.out.println("层层间隔的广度遍历：");
         Traversal.breadthFirstSearchWithDepthV2(treeNode1);
     }
 
