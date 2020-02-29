@@ -5,6 +5,7 @@
 package com.sam3125c.datastructure.binarytree;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 二叉树节点。
@@ -27,7 +28,7 @@ public class TreeNode {
     }
 
     /**
-     * 利用数组创建一个二叉树。
+     * 利用链表创建一个二叉树。
      *
      * @param input
      * @return com.sam3125c.datastructure.binarytree.TreeNode
@@ -47,6 +48,27 @@ public class TreeNode {
             node.right = createBinaryTree(input);
         }
         return node;
+    }
+
+    /**
+     * 将二叉树拆成一个链表。
+     *
+     * @param root
+     * @param result
+     * @return java.util.List<java.lang.Integer>
+     * @author Yang Rong
+     * @create 2020/2/29
+     */
+    public static List<Integer> dismantlingBinaryTree(TreeNode root, List<Integer> result) {
+        if (root == null) {
+            result.add(null);
+            return null;
+        }
+
+        result.add(root.val);
+        dismantlingBinaryTree(root.left, result);
+        dismantlingBinaryTree(root.right, result);
+        return result;
     }
 
 }

@@ -6,8 +6,10 @@ package com.sam3125c.datastructure.binarytree;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 import static com.sam3125c.datastructure.binarytree.TreeNode.createBinaryTree;
+import static com.sam3125c.datastructure.binarytree.TreeNode.dismantlingBinaryTree;
 
 /**
  * 二叉树数据结构相关测试。
@@ -21,38 +23,36 @@ public class Main {
 
     public static void main(String[] args) {
         LinkedList<Integer> input = new LinkedList<>(
-                Arrays.asList(1, 2, 4, null, null, 5, null, null, 3, 6, null, null, 7));
-        LinkedList<Integer> input1 = new LinkedList<>(
                 Arrays.asList(4, 2, 1, null, null, 3, null, null, 6, 5, null, null, 7));
         TreeNode treeNode = createBinaryTree(input);
-        TreeNode treeNode1 = createBinaryTree(input1);
+        List<Integer> treeLinked = dismantlingBinaryTree(treeNode, new LinkedList<>());
 
         System.out.println("前序遍历：");
-        Traversal.preOrderTraversal(treeNode1);
+        Traversal.preOrderTraversal(treeNode);
 
         System.out.println("中序遍历：");
-        Traversal.inOrderTraversal(treeNode1);
+        Traversal.inOrderTraversal(treeNode);
 
         System.out.println("后序遍历：");
-        Traversal.postOrderTraversal(treeNode1);
+        Traversal.postOrderTraversal(treeNode);
 
         System.out.println("深度遍历：");
-        Traversal.depthFirstSearch(treeNode1);
+        Traversal.depthFirstSearch(treeNode);
 
         System.out.println("带深度的深度遍历：");
-        Traversal.depthFirstSearchWithDepth(treeNode1);
+        Traversal.depthFirstSearchWithDepth(treeNode);
 
         System.out.println("叶子节点间隔的深度遍历：");
-        Traversal.depthFirstSearchWithDepthV2(treeNode1);
+        Traversal.depthFirstSearchWithDepthV2(treeNode);
 
         System.out.println("广度遍历：");
-        Traversal.breadthFirstSearch(treeNode1);
+        Traversal.breadthFirstSearch(treeNode);
 
         System.out.println("带深度的广度遍历：");
-        Traversal.breadthFirstSearchWithDepth(treeNode1);
+        Traversal.breadthFirstSearchWithDepth(treeNode);
 
         System.out.println("层层间隔的广度遍历：");
-        Traversal.breadthFirstSearchWithDepthV2(treeNode1);
+        Traversal.breadthFirstSearchWithDepthV2(treeNode);
     }
 
 }
