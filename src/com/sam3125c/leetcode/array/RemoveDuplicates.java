@@ -6,8 +6,8 @@ package com.sam3125c.leetcode.array;
 
 /**
  * 26. Remove Duplicates from Sorted Array
- * Runtime: 1 ms, faster than 97.32% of Java online submissions for Remove Duplicates from Sorted Array.
- * Memory Usage: 39 MB, less than 99.47% of Java online submissions for Remove Duplicates from Sorted Array.
+ * Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Duplicates from Sorted Array.
+ * Memory Usage: 41.5 MB, less than 17.02% of Java online submissions for Remove Duplicates from Sorted Array.
  *
  * @author Yang Rong
  * @version 1.0
@@ -17,26 +17,23 @@ package com.sam3125c.leetcode.array;
 public class RemoveDuplicates {
 
     public static int removeDuplicates(int[] nums) {
-        int len = nums.length;
-
-        if (len == 1) {
-            return len;
+        // 边界条件处理。
+        if (nums.length == 0 || nums.length == 1) {
+            return nums.length;
         }
-
-        int j = 0;
-        for (int i = 0; i < len; i++) {
-            if (nums[i] != nums[j]) {
-                j++;
-                nums[j] = nums[i];
+        // 引入快慢双指针，原地遍历。
+        // i 为快指针，无论何时都加一；j 为慢指针，若 j 指向的元素跟 i 相同，那么 j 就不增加。
+        // 很容易想象，j 与 i 中间的距离，就是重复元素的个数。
+        int index = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[index - 1]) {
+                nums[index] = nums[i];
+                index++;
             }
         }
-
-        return j + 1;
-    }
-
-    public static void main(String[] args) {
-        int[] test = {0, 0, 1, 1, 2, 2, 2, 3};
-        System.out.println(removeDuplicates(test));
+        // 最后返回的下标，不需要再加 1 即可表示长度。
+        // i++ 在 index++ 之后，最后一次 i++ 进不了循环。
+        return index;
     }
 
 }

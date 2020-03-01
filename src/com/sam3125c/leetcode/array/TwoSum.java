@@ -4,10 +4,13 @@
  */
 package com.sam3125c.leetcode.array;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 1. Two Sum
- * Runtime: 25 ms, faster than 22.57% of Java online submissions for Two Sum.
- * Memory Usage: 37.3 MB, less than 98.95% of Java online submissions for Two Sum.
+ * Runtime: 1 ms, faster than 99.90% of Java online submissions for Two Sum.
+ * Memory Usage: 41.7 MB, less than 5.65% of Java online submissions for Two Sum.
  *
  * @author Yang Rong
  * @version 1.0
@@ -17,17 +20,17 @@ package com.sam3125c.leetcode.array;
 public class TwoSum {
 
     public int[] twoSum(int[] nums, int target) {
-        int[] result = new int[2];
-        for(int i = 0; i < nums.length; i ++) {
-            for(int j = i +1; j < nums.length; j ++) {
-                if((nums[i] + nums[j]) == target) {
-                    result[0] = i;
-                    result[1] = j;
-                    return result;
-                }
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[]{map.get(complement), i};
             }
+            // 缓存遍历过的元素，供后续元素查找。
+            map.put(nums[i], i);
         }
-        return null;
+        throw new IllegalArgumentException("No two sum solution");
     }
 
 }
