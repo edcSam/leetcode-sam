@@ -19,8 +19,7 @@ import static com.sam3125c.datastructure.binarytree.TreeNode.dismantlingBinaryTr
  * @email samyang3125c@gmail.com
  * @create 2020-02-04
  */
-public class Main {
-
+public class Test {
     public static void main(String[] args) {
         LinkedList<Integer> input = new LinkedList<>(
                 Arrays.asList(4, 2, 1, null, null, 3, null, null, 6, 5, null, null, 7));
@@ -54,5 +53,4 @@ public class Main {
         System.out.println("层层间隔的广度遍历：");
         Traversal.breadthFirstSearchWithDepthV2(treeNode);
     }
-
 }
