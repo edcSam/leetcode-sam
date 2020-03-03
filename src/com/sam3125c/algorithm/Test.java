@@ -26,5 +26,16 @@ public class Test {
         System.out.println(BinarySearch.binarySearchWithRecursive(test1, 2));
         System.out.println("递归二分搜索，结果应该为下标 index = 5：");
         System.out.println(BinarySearch.binarySearchWithRecursive(test2, 77));
+
+        int[] test3 = {3, 5, 7, 13, 76, 43, 56, 87, 1, 22, 19};
+
+        System.out.println("开始归并排序...");
+        Sort.mergeSort(test3);
+        System.out.println("完成归并排序!!!");
+
+        System.out.println("开始快速排序...");
+        Sort.mergeSort(test3);
+        System.out.println("完成快速排序!!!");
+
     }
 }

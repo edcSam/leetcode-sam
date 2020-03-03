@@ -52,7 +52,7 @@ public class BinarySearch {
      * @create 2020/3/2
      */
     public static int binarySearchWithRecursive(int[] array, int target) {
-        return binarySearchRecursive(array, 0, array.length - 1, target);
+        return recursiveInBinarySearch(array, 0, array.length - 1, target);
     }
 
     /**
@@ -66,13 +66,13 @@ public class BinarySearch {
      * @author Yang Rong
      * @create 2020/3/2
      */
-    public static int binarySearchRecursive(int[] array, int low, int high, int target) {
+    private static int recursiveInBinarySearch(int[] array, int low, int high, int target) {
         // low 下标大于 high 下标，说明数组中找不到该元素，返回 -1。
         if (low > high) return -1;
         int mid = low + (high - low) / 2;
         // 递归搜索目标值，不断缩小搜索区间。
-        if (array[mid] > target) return binarySearchRecursive(array, low, mid - 1, target);
-        else if (array[mid] < target) return binarySearchRecursive(array, mid + 1, high, target);
+        if (array[mid] > target) return recursiveInBinarySearch(array, low, mid - 1, target);
+        else if (array[mid] < target) return recursiveInBinarySearch(array, mid + 1, high, target);
         else return mid;
     }
 
