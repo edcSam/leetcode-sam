@@ -133,6 +133,45 @@ def quick_sort(arr):
     return arr
 
 
+def heap_sort(arr):
+    """
+    堆排序的实现。
+    :param arr: list to sort.
+    :return: list: sorted arr.
+    """
+
+    def heapify(data, index, size=None):
+        if not size:
+            size = len(data)
+        while True:
+            # bigger_pos 引入可以帮助左右子节点的比较，还可以用作终止判断。
+            bigger_pos = index
+            if 2 * index < size and data[index] < data[2 * index]:
+                bigger_pos = 2 * index
+            if 2 * index + 1 < size and data[bigger_pos] < data[2 * index + 1]:
+                bigger_pos = 2 * index + 1
+            if bigger_pos == index:
+                break
+            data[index], data[bigger_pos] = data[bigger_pos], data[index]
+            index = bigger_pos
+
+    def build(data):
+        data.insert(0, None)
+        # 满二叉树的第 n/2 + 1 至 n 个节点是叶子结点，循环从 n/2 个开始。
+        # 加入哨兵节点后 len(data) - 1，因此是 int((len(data) - 1) / 2)。
+        # 第几个节点比数组的下标多一，而哨兵节点又需要补一。int((len(data) - 1) / 2) - 1 + 1。
+        for i in range(int((len(data) - 1) / 2), 0, -1):
+            heapify(data, i)
+
+    # 待排序数组的堆化处理。
+    build(arr)
+    # 不断处理大顶堆堆顶，原地排序。
+    for j in range(len(arr) - 1, 0, -1):
+        arr[1], arr[j] = arr[j], arr[1]
+        heapify(arr, 1, j)
+    return arr[1:]
+
+
 if __name__ == '__main__':
     sorted_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     print(f'bubble_sort() is {"ok" if bubble_sort([4, 3, 5, 7, 8, 1, 2, 9, 6]) == sorted_arr else "not ok"}.')
@@ -140,3 +179,4 @@ if __name__ == '__main__':
     print(f'select_sort() is {"ok" if select_sort([4, 3, 5, 7, 8, 1, 2, 9, 6]) == sorted_arr else "not ok"}.')
     print(f'merge_sort() is {"ok" if merge_sort([4, 3, 5, 7, 8, 1, 2, 9, 6]) == sorted_arr else "not ok"}.')
     print(f'quick_sort() is {"ok" if quick_sort([4, 3, 5, 7, 8, 1, 2, 9, 6]) == sorted_arr else "not ok"}.')
+    print(f'heap_sort() is {"ok" if heap_sort([4, 3, 5, 7, 8, 1, 2, 9, 6]) == sorted_arr else "not ok"}.')
